@@ -3,3 +3,6 @@ service:
   identifier: servicefromgithub
   orgIdentifier: Customer_Experience
   projectIdentifier: Labs
+  serviceDefinition:
+    spec: {}
+    type: Kubernetes
