@@ -1,0 +1,69 @@
+pipeline:
+  name: trigger-test
+  identifier: triggertest
+  projectIdentifier: Labs
+  orgIdentifier: Customer_Experience
+  tags: {}
+  stages:
+    - stage:
+        name: testing
+        identifier: testing
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: false
+            paths: []
+          buildIntelligence:
+            enabled: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: labk8sconnector
+              namespace: gowri
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: podinfodockerconnectorpublish
+                    image: nginx:latest
+                    shell: Sh
+                    command: |-
+                      echo "hello world"
+
+                      echo <+trigger.payload.repository.name>
+                      echo "====="
+                      echo "Pipeline variables"
+                      echo <+pipeline.variables.reponame>
+                      echo "====="
+
+                      echo <+<+pipeline.variables.reponame>.replaceAll('-|\\.','specialchars')>
+                      echo <+<+pipeline.variables.reponame>.contains("dummy")>
+                      echo "====="
+
+                      echo <+trigger.payload>
+                      echo "====="
+                      echo <+trigger>
+  variables:
+    - name: reponame
+      type: String
+      description: ""
+      required: false
+      value: <+trigger.payload.repository.name>
+    - name: inputvariable
+      type: String
+      description: ""
+      required: false
+      value: <+input>
+    - name: inputvariable2
+      type: String
+      description: ""
+      required: false
+      value: <+input>
