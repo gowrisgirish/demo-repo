@@ -7,15 +7,15 @@ USER root
 #COPY nginx-repo.key /etc/ssl/nginx/
 #COPY nginx-repo.jwt /etc/nginx/license.jwt
 #COPY repos.d/nginx-plus-8.repo /etc/yum.repos.d/nginx-plus-8.repo
-RUN yum install -y ca-certificates \
-    nginx-plus-module-headers-more \
-    nginx-plus && \
-    yum -y update libksba && \
-    yum clean all && \
-    mkdir -p /etc/ssl/nginx && \
-    rm -fv /etc/nginx/conf.d/default.conf && \
-    ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+#RUN yum install -y ca-certificates \
+#    nginx-plus-module-headers-more \
+#    nginx-plus && \
+#    yum -y update libksba && \
+#    yum clean all && \
+#    mkdir -p /etc/ssl/nginx && \
+#    rm -fv /etc/nginx/conf.d/default.conf && \
+#    ln -sf /dev/stdout /var/log/nginx/access.log && \
+#    ln -sf /dev/stderr /var/log/nginx/error.log
 #COPY nginx.conf /etc/nginx/nginx.conf
 #COPY conf.d/ /etc/nginx/conf.d/
 #COPY ssl/ /etc/ssl/
