@@ -32,4 +32,5 @@ RUN touch /var/run/nginx.pid && chmod 666 /var/run/nginx.pid && \
 EXPOSE 9000
 ENTRYPOINT ["mi-tec", "-t", "/etc/nginx/conf.d/*.conf", "-t", "/etc/ssl/*.pem"]
 CMD ["nginx"]
+RUN useradd -m testuser
 USER testuser
