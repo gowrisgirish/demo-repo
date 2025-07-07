@@ -20,6 +20,7 @@ USER root
 #COPY conf.d/ /etc/nginx/conf.d/
 #COPY ssl/ /etc/ssl/
 # Fix OSE permission problems
+RUN adduser -D testuser
 RUN chmod -R g+w /var/cache/nginx /etc/nginx/conf.d/ && \
     chmod g+w /etc/ssl/*.pem && \
     mkdir /var/cache/nginx/client_temp && \
