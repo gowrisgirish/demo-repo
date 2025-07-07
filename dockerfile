@@ -30,7 +30,7 @@ RUN touch /var/run/nginx.pid && chmod 666 /var/run/nginx.pid && \
     ls -lrtha /var/run/
 
 EXPOSE 9000
-ENTRYPOINT ["mi-tec", "-t", "/etc/nginx/conf.d/*.conf", "-t", "/etc/ssl/*.pem"]
+#ENTRYPOINT ["mi-tec", "-t", "/etc/nginx/conf.d/*.conf", "-t", "/etc/ssl/*.pem"]
 CMD ["nginx"]
 RUN adduser -D testuser
 USER testuser
