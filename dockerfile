@@ -24,7 +24,7 @@ RUN adduser -D testuser
 RUN chmod -R g+w /var/cache/nginx /etc/nginx/conf.d/ && \
     chmod g+w /etc/ssl/*.pem && \
     mkdir /var/cache/nginx/client_temp && \
-    chown -R testuser:testuser /var /etc && \
+    chown -R testuser:testuser /var /etc /run && \
     chown -R testuser:testuser /var/cache/nginx /var/ /etc/nginx /etc/ssl || true && \
     rm -rf /etc/ssl/nginx/nginx-repo.key
 
