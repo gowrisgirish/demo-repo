@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine 
+FROM nginx:latest 
 # NOTE:
 #    Fundamental changes to the image should be planned and communicated to users, to remain
 #    transparent and to allow them to increase their testing after build.
