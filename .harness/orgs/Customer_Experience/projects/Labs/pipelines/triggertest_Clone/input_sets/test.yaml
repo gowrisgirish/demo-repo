@@ -1,0 +1,43 @@
+inputSet:
+  name: test
+  identifier: test
+  orgIdentifier: Customer_Experience
+  projectIdentifier: Labs
+  pipeline:
+    identifier: triggertest_Clone
+    stages:
+      - stage:
+          identifier: deploy
+          type: Deployment
+          spec:
+            service:
+              serviceRef: nginxservice
+              serviceInputs:
+                serviceDefinition:
+                  type: Kubernetes
+                  spec:
+                    artifacts:
+                      primary:
+                        sources:
+                          - identifier: nginximage
+                            type: DockerRegistry
+                            spec:
+                              tag: ""
+                    variables:
+                      - name: test_variable
+                        type: String
+                        value: ""
+                      - name: secertvalue
+                        type: Secret
+                        value: ""
+                      - name: deploy_mode
+                        type: String
+                        default: none
+                        value: none
+    variables:
+      - name: inputvariable
+        type: String
+        value: ""
+      - name: inputvariable2
+        type: String
+        value: ""
